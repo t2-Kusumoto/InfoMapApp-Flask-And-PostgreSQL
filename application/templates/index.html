@@ -4,7 +4,6 @@
     <title>春日井市西部 対策商品販売状況</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <script src="./static/data.js"></script>
     <style>
     #map {
       height: 86%;
@@ -39,7 +38,6 @@
       'use strict';
 
     let map;
-    const data = Data;
 
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
@@ -60,25 +58,29 @@
           ],
           zoom: 14
         });
-        putMarker(data);
+        fetch('./static/data.json')
+        .then(function(response){return response.json();})
+        .then(putMarker);
       }
 
       function putMarker(data) {
-        for (let num in data) {
+        for (let code in data) {
           const infoContent =
-          `<span><strong>${data[num].name}</strong></span><br/>
-          <span>${data[num].time}</span><br/>
+          `<span><strong>${data[code].shopname}</strong></span><br/>
+          <span>${data[code].opentime}</span><br/>
           <hr/>
-          <span>更新日時: ${data[num].update}</span><br/>
-          <span>住所: ${data[num].addr}</span><br/>
-          <span>Tel: ${data[num].tel}</span>
+          <span>更新日時: ${data[code].lastupdate}</span><br/>
+          <span>住所: ${data[code].address}</span><br/>
+          <span>Tel: ${data[code].tel}</span>
           <hr>
-          <form action="/form" method="POST">
-            <input type="hidden" name="shopcode" value="{{ shopcode }}">
+          <form action="/form" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="shopcode" value="${code}">
+            <input type="hidden" name="shopname" value="${data[code].shopname}">
             <input  class="btn" type="submit" value="情報を入力する">
           </form>
-          <form action="/view" method="POST">
-            <input type="hidden" name="shopcode" value="{{ shopcode }}"/>
+          <form action="/view" method="POST" accept-charset="UTF-8">
+            <input type="hidden" name="shopcode" value="${code}"/>
+            <input type="hidden" name="shopname" value="${data[code].shopname}">
             <input class="btn" type="submit" value="投稿された情報を見る">
           </form>`;
 
@@ -88,10 +90,9 @@
           });
 
           const marker = new google.maps.Marker({
-            position: data[num].latlng,
+            position: data[code].latlng,
             map: map,
-            // icon: IconImg[data[num].stock],
-            title: data[num].name,
+            title: data[code].name,
           });
 
           marker.addListener('click', function() {

@@ -5,12 +5,13 @@ from application import db
 
 class ShopsInfo(db.Model):
     __tablename__ = 'shopsinfo'
-    code = db.Column(db.String(4), primary_key=True)
-    shopname = db.Column(db.String(24))
-    address = db.Column(db.String(36))
+    no = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(4))
+    shopname = db.Column(db.String(64))
+    address = db.Column(db.String(128))
     tel = db.Column(db.String(16))
-    opentime = db.Column(db.String(36))
-    lastupdate = db.Column(db.String(16))
+    opentime = db.Column(db.String(64))
+    lastupdate = db.Column(db.String(32))
     lat = db.Column(db.Float)
     lng = db.Column(db.Float)
 
@@ -23,13 +24,14 @@ class ShopsInfo(db.Model):
 
 class PostData(db.Model):
     __tablename__ = 'postdata'
-    code = db.Column(db.String(4), primary_key=True)
-    date = db.Column(db.String(16))
+    no = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(4))
+    date = db.Column(db.String(32))
     mask = db.Column(db.String(8))
     paper = db.Column(db.String(8))
     liquied = db.Column(db.String(8))
     sheet = db.Column(db.String(8))
-    text = db.Column(db.String(256))
+    text = db.Column(db.Text)
 
     def __repr__(self):
         return "<ShopsInfo(code='%s', date='%s', mask='%s',\

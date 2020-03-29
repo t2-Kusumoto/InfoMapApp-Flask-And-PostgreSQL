@@ -23,47 +23,30 @@
   </style>
 </head>
 <body>
-  <h2>OO 店 の在庫状況に関する投稿</h2>
+  <h2>{{ shopname }}の在庫状況に関する投稿</h2>
   <div class="messageBox">
-    <div class="message">
-      <span id="date">2020-03-28 00:00</span><br>
-      mask <span id="mask">oo 在庫あり</span><br>
-      paper <span id="paper">^^ 在庫僅か</span><br>
-      liquid <span id="liquid">xx 在庫なし</span><br>
-      sheets <span id="sheets">?? 分からない</span><br>
-      <span id="text">Hello World. Hello World. Hello World. Hello World. Hello World. Hello World. Hello World.</span>
-    </div>
-    <div class="message">
-      <span id="date">2020-03-28 00:00</span><br>
-      mask <span id="mask">oo 在庫あり</span><br>
-      paper <span id="paper">^^ 在庫僅か</span><br>
-      liquid <span id="liquid">xx 在庫なし</span><br>
-      sheets <span id="sheets">?? 分からない</span><br>
-      <span id="text">Hello World. Hello World. Hello World. Hello World. Hello World. Hello World. Hello World.</span>
-    </div>
-    <div class="message">
-      <span id="date">2020-03-28 00:00</span><br>
-      mask <span id="mask">oo 在庫あり</span><br>
-      paper <span id="paper">^^ 在庫僅か</span><br>
-      liquid <span id="liquid">xx 在庫なし</span><br>
-      sheets <span id="sheets">?? 分からない</span><br>
-      <span id="text">Hello World. Hello World. Hello World. Hello World. Hello World. Hello World. Hello World.</span>
-    </div>
-    <div class="message">
-      <span id="date">2020-03-28 00:00</span><br>
-      mask <span id="mask">oo 在庫あり</span><br>
-      paper <span id="paper">^^ 在庫僅か</span><br>
-      liquid <span id="liquid">xx 在庫なし</span><br>
-      sheets <span id="sheets">?? 分からない</span><br>
-      <span id="text">Hello World. Hello World. Hello World. Hello World. Hello World. Hello World. Hello World.</span>
-    </div>
+    {% if infomation %}
+      {% for info in infomation %}
+        <div class="message">
+          <span id="date">{{ info["data"] }}</span><br>
+          mask <span id="mask">{{ info["mask"] }}</span><br>
+          paper <span id="paper">{{ info["paper"] }}</span><br>
+          liquid <span id="liquid">{{ info["liqied"] }}</span><br>
+          sheets <span id="sheets">{{ info["sheet"] }}</span><br>
+          <span id="text">{{ info["text"] }}</span>
+        </div>
+      {% endfor %}
+    {% else %}
+    <h3>まだ投稿がありません</h3>
+    {% endif %}
   </div>
   <div id="link">
     <form action="/" method="GET">
       <input type="submit" value="Mapへ戻る">
     </form>
     <form action="/form" method="POST">
-      <input type="hidden" name="shopcode" value="0001">
+      <input type="hidden" name="shopcode" value="{{ shopcode }}">
+      <input type="hidden" name="shopname" value="{{ shopname }}">
       <input type="submit" value="情報を入力する">
     </form>
   </div>

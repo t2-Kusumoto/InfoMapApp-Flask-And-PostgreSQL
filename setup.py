@@ -7,32 +7,29 @@ import sys
 from application import db
 from application.model import create_db
 from application.model import ShopsInfo
+from application.model import PostData
+from application.script import make_json
+from application.script.db_handler import DBHandler
 from instance import insert_data
 
 
-def insert(dic):
-    data = ShopsInfo(code=html.escape(dic['code']),
-                     shopname=html.escape(dic['shopname']),
-                     lastupdate=html.escape(dic['lastupdate']),
-                     opentime=html.escape(dic['open']),
-                     address=html.escape(dic['address']),
-                     lat=dic['lat'],
-                     lng=dic['lng'],
-                     tel=html.escape(dic['tel']))
-    db.session.add(data)
-    db.session.commit()
-
-
-def setup_db():
+def insert_shops_data():
+    handler = DBHandler(db, ShopsInfo, "shopinfo")
     data = insert_data.DATA
     print('insert start')
     for d in data:
-        insert(d)
+        handler.insert(d)
     print('end')
 
+def make_init_json():
+    print('create application/static/data.json')
+    make_json.make_json_file()
+    print("END (data length : {})".format(len(res)))
 
 if __name__ == '__main__':
     if sys.argv[1] == 'create':
         create_db()
     elif sys.argv[1] == 'insert':
-        setup_db()
+        insert_shops_data()
+    elif sys.argv[1] == 'makejson':
+        make_init_json()
