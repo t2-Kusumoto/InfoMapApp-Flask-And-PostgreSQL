@@ -39,5 +39,6 @@ class PostData(db.Model):
     .format(self.code, self.date, self.mask, self.paper,
             self.liquied, self.sheet, self.text)
 
+
 def create_db():
     db.create_all()

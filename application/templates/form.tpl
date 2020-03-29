@@ -6,6 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Input form</title>
   <style>
+  body {
+    background: #ffd;
+  }
   h2 {
     margin: 0
   }
@@ -13,6 +16,19 @@
       display: inline-block;
       margin-top: 0.5em;
     }
+  .btn {
+    margin-top: 15px;
+    width: 120px;
+  }
+  @media (max-width: 1025px) {
+  }
+  @media (max-width: 480px) {
+    .btn {
+      margin-top: 5%;
+      display: block;
+      width: 35%;
+    }
+  }
   </style>
 </head>
 <body>
@@ -64,8 +80,11 @@
       <textarea name="text" id="" cols="45" rows="9" maxlength="200"></textarea>
     <input type="hidden" name="shopcode", value="{{ shopcode }}">
     <input type="hidden" name="shopname", value="{{ shopname }}">
-    <input type="submit" value="情報を投稿する" onclick="return confirm('この内容で登録してよろしいですか?');">
+    <br>
+    <input type="submit" value="情報を投稿する" onclick="return confirm('この内容で登録してよろしいですか?');" class="btn">
   </form>
-  <a href="/">&lt;地図に戻る</a>
+  <form action="/" method="GET">
+    <input type="submit" value="地図に戻る" class="btn">
+  </form>
 </body>
 </html>

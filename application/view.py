@@ -19,7 +19,8 @@ def main_map():
 def form():
     name = request.form['shopname']
     code = request.form['shopcode']
-    return render_template('form.tpl', shopname=name, shopcode=code)
+    return render_template('form.tpl', shopname=name,
+                           shopcode=code)
 
 
 @app.route('/view', methods=["POST"])
@@ -30,22 +31,25 @@ def view():
     res = select_handler.select(code)
     infos = make_info_dict(res)
 
-    return render_template('view.tpl', infomation=infos, shopname=name, shopcode=code)
+    return render_template('view.tpl', infomation=infos,
+                           shopname=name, shopcode=code)
+
 
 @app.route('/insert_info', methods=['POST'])
 def insert_info():
     code = request.form['shopcode']
     name = request.form['shopname']
     order = {"code": code,
-        "mask": request.form["mask"],
-        "paper": request.form["paper"],
-        "liquied": request.form["liquied"],
-        "sheet": request.form["sheet"],
-        "text": request.form["text"],
-    }
+             "mask": request.form["mask"],
+             "paper": request.form["paper"],
+             "liquied": request.form["liquied"],
+             "sheet": request.form["sheet"],
+             "text": request.form["text"]
+             }
     handler = DBHandler(db, PostData, "postdata")
     update_handler = DBHandler(db, ShopsInfo, "shopinfo")
     update_handler.update(code)
     make_json_file()
     handler.insert(order)
-    return render_template('thanks.tpl', shopcode=code, shopname=name)
+    return render_template('thanks.tpl', shopcode=code,
+                           shopname=name)

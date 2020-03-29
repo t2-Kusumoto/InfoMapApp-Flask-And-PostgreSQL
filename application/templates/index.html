@@ -1,34 +1,14 @@
 <!DOCTYPE html>
 <html lang=ja>
   <head>
-    <title>春日井市西部 対策商品販売状況</title>
+    <title>春日井市西部 コロナ対策グッズ販売状況</title>
     <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
-    <style>
-    #map {
-      height: 86%;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    .btn {
-      background: #ddd;
-      color: #333;
-      /* font-weight: bold; */
-      width:75%;
-      padding: 3%;
-      /* display: inline-block; */
-      margin:0.5em;
-    }
-    </style>
+    <link rel="stylesheet" href="../static/styles.css">
   </head>
   <body>
     <div id="header">
-      <div>Mask Map -- 春日井市西部 -- </div>
+      <div>コロナ対策グッズ販売状況 -- 春日井市西部 -- </div>
       <span id="disclimer">※免責事項: 記載内容について製作者は一切の責任を負いません</span><br/>
     </div>
 
@@ -58,7 +38,7 @@
           ],
           zoom: 14
         });
-        fetch('./static/data.json')
+        fetch('./static/data.json', {cache: "no-store"})
         .then(function(response){return response.json();})
         .then(putMarker);
       }

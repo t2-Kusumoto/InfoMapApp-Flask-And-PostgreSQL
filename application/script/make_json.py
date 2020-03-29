@@ -5,6 +5,7 @@ from application import db
 from application.script.db_handler import DBHandler
 from application.model import ShopsInfo
 
+
 def create_map_data(res):
     """下記create_js_file() と合わせてdata.js を作成"""
     json_obj = '{'
