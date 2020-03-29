@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang=ja>
+  <head>
+    <title>春日井市西部 対策商品販売状況</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="./static/data.js"></script>
+    <style>
+    #map {
+      height: 86%;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .btn {
+      background: #ddd;
+      color: #333;
+      /* font-weight: bold; */
+      width:75%;
+      padding: 3%;
+      /* display: inline-block; */
+      margin:0.5em;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <div>Mask Map -- 春日井市西部 -- </div>
+      <span id="disclimer">※免責事項: 記載内容について製作者は一切の責任を負いません</span><br/>
+    </div>
+
+    <div id="map"></div>
+    <script>
+    {
+      'use strict';
+
+    let map;
+    const data = Data;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 35.2427162, lng: 136.9533993},
+          styles: [
+            {
+              "featureType": "poi.school",
+              "stylers": [
+                { "visibility": "off" }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "stylers": [
+                { "saturation": -100 }
+              ]
+            },
+          ],
+          zoom: 14
+        });
+        putMarker(data);
+      }
+
+      function putMarker(data) {
+        for (let num in data) {
+          const infoContent =
+          `<span><strong>${data[num].name}</strong></span><br/>
+          <span>${data[num].time}</span><br/>
+          <hr/>
+          <span>更新日時: ${data[num].update}</span><br/>
+          <span>住所: ${data[num].addr}</span><br/>
+          <span>Tel: ${data[num].tel}</span>
+          <hr>
+          <form action="/form" method="POST">
+            <input type="hidden" name="shopcode" value="{{ shopcode }}">
+            <input  class="btn" type="submit" value="情報を入力する">
+          </form>
+          <form action="/view" method="POST">
+            <input type="hidden" name="shopcode" value="{{ shopcode }}"/>
+            <input class="btn" type="submit" value="投稿された情報を見る">
+          </form>`;
+
+          const infowindow =new google.maps.InfoWindow({
+            content: infoContent,
+            maxWidth: 250
+          });
+
+          const marker = new google.maps.Marker({
+            position: data[num].latlng,
+            map: map,
+            // icon: IconImg[data[num].stock],
+            title: data[num].name,
+          });
+
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        }
+      }
+
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDO4g7_mj12wfAZ5qqjoUpWkHV85IMwJAA&callback=initMap"
+    async defer></script>
+  </body>
+</html>
