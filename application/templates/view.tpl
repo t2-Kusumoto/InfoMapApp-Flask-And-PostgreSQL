@@ -58,7 +58,7 @@
   </style>
 </head>
 <body>
-  <h3>◆ {{ shopname }}の情報 ◆</h3>
+  <h3>◆ {{ shopname }} ◆</h3>
   <span>※ 投稿日時を確認してください</span>
   <hr>
   <div class="messageBox">

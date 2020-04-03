@@ -2,7 +2,7 @@
 
 #header {
   width: 100%;
-  height: 15%;
+  height: 10%;
   border-bottom: 2px solid #ccc;
   box-sizing: border-box;
   text-align: center;
@@ -14,7 +14,7 @@
 }
 
 #map {
-  height: 65%;
+  height: 75%;
 }
 
 #usage {
@@ -41,6 +41,9 @@ html, body {
   font-weight: bold;
 }
 
+.text {
+  margin-left: 2em;
+}
 #disclimer {
   font-weight: bold;
   font-style: italic;
