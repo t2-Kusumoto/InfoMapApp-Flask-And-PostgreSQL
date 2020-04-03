@@ -7,7 +7,8 @@
   <title>Thank you!</title>
   <style>
   body {
-    background: #ffd;
+    /* background: #fdfcef; */
+    color: #311;
   }
   .btn {
     margin-top: 15px;

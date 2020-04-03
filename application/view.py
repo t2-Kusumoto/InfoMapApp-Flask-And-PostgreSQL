@@ -39,7 +39,7 @@ def view():
 def insert_info():
     code = request.form['shopcode']
     name = request.form['shopname']
-    order = {"code": code,
+    res = {"code": code,
              "mask": request.form["mask"],
              "paper": request.form["paper"],
              "liquied": request.form["liquied"],
@@ -50,6 +50,10 @@ def insert_info():
     update_handler = DBHandler(db, ShopsInfo, "shopinfo")
     update_handler.update(code)
     make_json_file()
-    handler.insert(order)
+    handler.insert(res)
     return render_template('thanks.tpl', shopcode=code,
                            shopname=name)
+
+@app.route('/opinions_and_impression')
+def opinions_and_impression():
+    return render_template('opinions.tpl')
