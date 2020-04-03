@@ -1,0 +1,18 @@
+"""
+データベースへ店舗データを追加する時はこのファイルを[insert_data.py]として使用する（その場合オリジナルのファイルはリネームしておく）
+DATA = array > dict の入れ子にして渡す
+
+現在 "0027"まで使用中
+"""
+DATA = [
+        # #2
+        {"code": "0028",
+         "update": " - ",
+         "shopname": "[shopname]",
+         "open": "[opentime]",
+         "address": "[address]",
+         "lat": "[latitude]",
+         "lng": "[longitude]",
+         "tel": "[tel number]",
+         }
+    ]

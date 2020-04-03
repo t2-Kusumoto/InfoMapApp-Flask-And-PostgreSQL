@@ -7,13 +7,14 @@
   <title>Thank you!</title>
   <style>
   body {
-    /* background: #fdfcef; */
     color: #311;
   }
+
   .btn {
     margin-top: 15px;
     width: 120px;
   }
+  
   @media (max-width: 1025px) {
   }
 
@@ -27,7 +28,7 @@
   </style>
 </head>
 <body>
-  <h1>情報の投稿ありがとうございます！</h1>
+  <h3>情報の投稿ありがとうございます！</h3>
   <form action="/" method="GET">
     <input type="submit" value="地図に戻る" class="btn">
   </form>

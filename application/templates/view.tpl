@@ -7,33 +7,34 @@
   <title>春日井市西部 コロナ対策製品販売状況</title>
   <style>
     body {
-      /* background: #fdfcef; */
       color: #311;
     }
-    h3 {
-    }
+
     .messageBox {
       margin: 0 auto;
       width: 90%;
       height: 500px;
       overflow-y: scroll;
-      /* border: solid 2px #aaa; */
     }
+
     .message {
       width:100%;
       height:auto;
       margin-bottom: 20px;
       background: #fff;
       color: #622;
-      border: double 6px #bbc;
+      border: solid 2px #bbc;
       box-sizing: border-box;
     }
+
     table {
       margin: 3% 5%;
     }
+
     td {
       width: 30%;
     }
+
     #text {
       margin: 3% 5%;
     }
@@ -42,6 +43,7 @@
       margin-top: 15px;
       width: 120px;
     }
+
     @media (max-width: 1025px) {
     }
 
@@ -51,6 +53,7 @@
         display: block;
         width: 35%;
       }
+
       table {
         font-size: 14px;
       }
@@ -77,11 +80,11 @@
             </tr>
             <tr>
               <td>ウェットティッシュ</td>
-              <td>{{ info["paper"] }}</td>
+              <td>{{ info["wet"] }}</td>
             </tr>
             <tr>
               <td>消毒液類</td>
-              <td>{{ info["liquied"] }}</td>
+              <td>{{ info["liquid"] }}</td>
             </tr>
             <tr>
               <td>除菌シート類</td>

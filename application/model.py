@@ -28,16 +28,29 @@ class PostData(db.Model):
     code = db.Column(db.String(4))
     date = db.Column(db.String(32))
     mask = db.Column(db.String(8))
-    paper = db.Column(db.String(8))
-    liquied = db.Column(db.String(8))
+    wet = db.Column(db.String(8))
+    liquid = db.Column(db.String(8))
     sheet = db.Column(db.String(8))
     text = db.Column(db.Text)
 
     def __repr__(self):
         return "<ShopsInfo(code='%s', date='%s', mask='%s',\
-        paper='%s', liquied='%s', sheet='%s', text='%s')>"\
+        wet='%s', liquid='%s', sheet='%s', text='%s')>"\
     .format(self.code, self.date, self.mask, self.paper,
             self.liquied, self.sheet, self.text)
+
+
+class OpinionsAndImpression(db.Model):
+    __tablename__ = 'opinions'
+    no = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.String(32))
+    opinion = db.Column(db.Text)
+    response = db.Column(db.Text)
+
+    def __repr__(self):
+        return "<OpinionsAndImpression(date='%s',opinion='%s',\
+            response='%s')>"\
+    .format(self.date, self.opinion, self.response)
 
 
 def create_db():

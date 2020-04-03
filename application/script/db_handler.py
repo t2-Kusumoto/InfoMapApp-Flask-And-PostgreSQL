@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
+"""
+Class responsible for handling the database
 
+"""
 
 import datetime
 import html
 
 
 class DBHandler:
+    """Database handling Class"""
 
     def __init__(self, db, table, name):
         self.db = db
@@ -14,24 +18,28 @@ class DBHandler:
         self.now = datetime.datetime.now().strftime(
             '%Y年%m月%d日 %H:%M')
 
-    def insert(self, dic):
+    def insert(self, contents):
         if self.name == "shopinfo":
-            data = self.table(code=html.escape(dic['code']),
-                              shopname=html.escape(dic['shopname']),
-                              opentime=html.escape(dic['open']),
-                              address=html.escape(dic['address']),
-                              lastupdate=html.escape(dic['update']),
-                              lat=dic['lat'],
-                              lng=dic['lng'],
-                              tel=html.escape(dic['tel']))
-        else:
-            data = self.table(code=html.escape(dic['code']),
+            data = self.table(code=html.escape(contents['code']),
+                              shopname=html.escape(contents['shopname']),
+                              opentime=html.escape(contents['open']),
+                              address=html.escape(contents['address']),
+                              lastupdate=html.escape(contents['update']),
+                              lat=contents['lat'],
+                              lng=contents['lng'],
+                              tel=html.escape(contents['tel']))
+        elif self.name == "postdata":
+            data = self.table(code=html.escape(contents['code']),
                               date=html.escape(self.now),
-                              mask=html.escape(dic['mask']),
-                              paper=html.escape(dic['paper']),
-                              liquied=html.escape(dic['liquied']),
-                              sheet=html.escape(dic['sheet']),
-                              text=html.escape(dic['text']))
+                              mask=html.escape(contents['mask']),
+                              wet=html.escape(contents['wet']),
+                              liquid=html.escape(contents['liquid']),
+                              sheet=html.escape(contents['sheet']),
+                              text=html.escape(contents['text']))
+        else:
+            data = self.table(date=html.escape(self.now),
+                              opinion=html.escape(contents),
+                              response="")
         self.db.session.add(data)
         self.db.session.commit()
         self.db.session.close()
@@ -44,8 +52,18 @@ class DBHandler:
         self.db.session.commit()
         self.db.session.close()
 
+    def opinion_update(self, no, text):
+        res_set_record = self.db.session.query(self.table).\
+            filter_by(no=no).first()
+        res_set_record.response = text
+        self.db.session.commit()
+        self.db.session.close()
+
     def select_all(self):
-        return self.table.query.all()
+        if self.name == "opinionsandimpression":
+            return self.table.query.order_by(self.table.date.desc())
+        else:
+            return self.table.query.all()
 
     def select(self, code):
         res = self.table.query.filter(self.table.code == code)\

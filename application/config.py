@@ -16,4 +16,4 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://t2kusumoto:otokareeiel@localhost:5432/ma
 
 SQLALCHEMY_TRACK_MODIFICATIONS = True
 
-SECRET_KEY = 'dev'
+SECRET_KEY = b'g` \x83\xef]\xeaKl\x105-D\x96\x85A'
