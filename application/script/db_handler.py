@@ -52,6 +52,13 @@ class DBHandler:
         self.db.session.commit()
         self.db.session.close()
 
+    def delete(self, no):
+        delete_row = self.db.session.query(self.table).\
+        filter_by(no=no).first()
+        self.db.session.delete(delete_row)
+        self.db.session.commit()
+        self.db.session.close()
+
     def opinion_update(self, no, text):
         res_set_record = self.db.session.query(self.table).\
             filter_by(no=no).first()

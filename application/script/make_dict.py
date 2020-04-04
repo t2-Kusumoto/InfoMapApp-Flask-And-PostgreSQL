@@ -28,7 +28,8 @@ def make_info_dict(res):
     info_list = []
     for r in res:
         info_list.append(
-            {"code": r.code,
+            {"no": r.no,
+             "code": r.code,
              "date": r.date,
              "mask": make_stock_status(r.mask),
              "wet": make_stock_status(r.wet),

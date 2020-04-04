@@ -4,4 +4,4 @@ __pycache__/
 *.jpg
 *.jpeg
 favicon.ico
-
+.azure/

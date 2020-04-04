@@ -62,12 +62,23 @@
 </head>
 <body>
   <h3>◆ {{ shopname }} ◆</h3>
-  <span>※ 投稿日時を確認してください</span>
+  <span>※ 投稿日時を確認した上で、情報を参考にするか否かの判断をしていただくようお願いします</span>
+  <hr>
+  <div id="link">
+    <form action="/form" method="POST">
+      <input type="hidden" name="shopcode" value="{{ shopcode }}">
+      <input type="hidden" name="shopname" value="{{ shopname }}">
+      <input type="submit" value="情報を入力する" class="btn">
+    </form>
+    <form action="/" method="GET">
+      <input type="submit" value="地図に戻る" class="btn">
+    </form>
+  </div>
   <hr>
   <div class="messageBox">
     {% if infomation %}
       {% for info in infomation %}
-        <div class="message">
+        <div class="message" id="{{ info['no'] }}">
           <span id="date">● 投稿日時: {{ info["date"] }}</span>
           <table border=1>
             <tr>
@@ -91,23 +102,12 @@
               <td>{{ info["sheet"] }}</td>
             </tr>
           </table>
-          <div id="text"><strong>その他の品物の情報:</strong> <hr>{{ info["text"] }}</div>
+          <div id="text"><strong>より詳細な情報やその他製品の情報:</strong> <hr>{{ info["text"] }}</div>
         </div>
       {% endfor %}
     {% else %}
     <h3>まだ投稿がありません</h3>
     {% endif %}
-  </div>
-  <hr>
-  <div id="link">
-    <form action="/form" method="POST">
-      <input type="hidden" name="shopcode" value="{{ shopcode }}">
-      <input type="hidden" name="shopname" value="{{ shopname }}">
-      <input type="submit" value="情報を入力する" class="btn">
-    </form>
-    <form action="/" method="GET">
-      <input type="submit" value="地図に戻る" class="btn">
-    </form>
   </div>
 </body>
 </html>

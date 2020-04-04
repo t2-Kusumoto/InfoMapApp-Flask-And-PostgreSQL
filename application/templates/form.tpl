@@ -81,8 +81,8 @@
     <input type="radio" name="sheet" value="white" id="w" checked>
     <label for="w"></label>分からない
       <br>
-    <p>・ その他の品物の情報(200文字以内)</p>
-      <textarea name="text" id="" cols="45" rows="9" maxlength="200"></textarea>
+    <p>・ より詳細な情報やその他製品の情報<br>(200文字以内)</p>
+      <textarea name="text" id="" cols="40" rows="9" maxlength="200"></textarea>
     <input type="hidden" name="shopcode", value="{{ shopcode }}">
     <input type="hidden" name="shopname", value="{{ shopname }}">
     <br>

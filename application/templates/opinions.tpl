@@ -47,7 +47,7 @@
   </ul>
   <form action="/opinions_insert" method="POST">
     <span>● 200文字以内で以下に入力してください</span><br>
-    <textarea name="opinion" id="" cols="45" rows="8" maxlength="200"></textarea>
+    <textarea name="opinion" id="" cols="40" rows="9" maxlength="200"></textarea>
     <br>
     <input type="submit" value="送信する" onclick="return confirm('この内容で送信してよろしいですか?');" class="btn">
   </form>
