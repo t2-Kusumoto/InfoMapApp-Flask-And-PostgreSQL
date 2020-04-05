@@ -33,8 +33,8 @@ def make_info_dict(res):
              "date": r.date,
              "mask": make_stock_status(r.mask),
              "wet": make_stock_status(r.wet),
-             "liquid": make_stock_status(r.liquid),
-             "sheet": make_stock_status(r.sheet),
+             "paper": make_stock_status(r.paper),
+             "water": make_stock_status(r.water),
              "text": make_text(r.text),
              })
     return info_list

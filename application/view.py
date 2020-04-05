@@ -46,8 +46,8 @@ def insert_info():
     contents = {"code": code,
                 "mask": request.form["mask"],
                 "wet": request.form["wet"],
-                "liquid": request.form["liquid"],
-                "sheet": request.form["sheet"],
+                "paper": request.form["paper"],
+                "water": request.form["water"],
                 "text": request.form["text"]
                 }
     handler = DBHandler(db, PostData, "postdata")

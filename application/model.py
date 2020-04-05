@@ -29,15 +29,15 @@ class PostData(db.Model):
     date = db.Column(db.String(32))
     mask = db.Column(db.String(8))
     wet = db.Column(db.String(8))
-    liquid = db.Column(db.String(8))
-    sheet = db.Column(db.String(8))
+    paper = db.Column(db.String(8))
+    water = db.Column(db.String(8))
     text = db.Column(db.Text)
 
     def __repr__(self):
         return "<ShopsInfo(code='%s', date='%s', mask='%s',\
-        wet='%s', liquid='%s', sheet='%s', text='%s')>"\
-    .format(self.code, self.date, self.mask, self.paper,
-            self.liquied, self.sheet, self.text)
+        wet='%s', paper='%s', water='%s', text='%s')>"\
+    .format(self.code, self.date, self.mask, self.wet, self.paper,
+    self.water, self.text)
 
 
 class OpinionsAndImpression(db.Model):

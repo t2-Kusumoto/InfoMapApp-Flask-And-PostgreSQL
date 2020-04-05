@@ -61,24 +61,24 @@
     <input type="radio" name="wet" value="white" id="w" checked>
     <label for="w"></label>分からない
       <br>
-    <span>・ 消毒液</span><br>
-    <input type="radio" name="liquid" value="green" id="g">
+    <span>・ キッチンペーパー</span><br>
+    <input type="radio" name="paper" value="green" id="g">
     <label for="g">あり</label>
-    <input type="radio" name="liquid" value="yellow" id="y">
+    <input type="radio" name="paper" value="yellow" id="y">
     <label for="y">残り僅か</label>
-    <input type="radio" name="liquid" value="red" id="r">
+    <input type="radio" name="paper" value="red" id="r">
     <label for="">なし</label>
-    <input type="radio" name="liquid" value="white" id="w" checked>
+    <input type="radio" name="paper" value="white" id="w" checked>
     <label for="w"></label>分からない
       <br>
-    <span>・ 除菌シート</span><br>
-    <input type="radio" name="sheet" value="green" id="g">
+    <span>・ ミネラルウォーター</span><br>
+    <input type="radio" name="water" value="green" id="g">
     <label for="g">あり</label>
-    <input type="radio" name="sheet" value="yellow" id="y">
+    <input type="radio" name="water" value="yellow" id="y">
     <label for="y">残り僅か</label>
-    <input type="radio" name="sheet" value="red" id="r">
+    <input type="radio" name="water" value="red" id="r">
     <label for="">なし</label>
-    <input type="radio" name="sheet" value="white" id="w" checked>
+    <input type="radio" name="water" value="white" id="w" checked>
     <label for="w"></label>分からない
       <br>
     <p>・ より詳細な情報やその他製品の情報<br>(200文字以内)</p>

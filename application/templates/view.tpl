@@ -94,12 +94,12 @@
               <td>{{ info["wet"] }}</td>
             </tr>
             <tr>
-              <td>消毒液類</td>
-              <td>{{ info["liquid"] }}</td>
+              <td>キッチンペーパー</td>
+              <td>{{ info["paper"] }}</td>
             </tr>
             <tr>
-              <td>除菌シート類</td>
-              <td>{{ info["sheet"] }}</td>
+              <td>ミネラルウォーター</td>
+              <td>{{ info["water"] }}</td>
             </tr>
           </table>
           <div id="text"><strong>より詳細な情報やその他製品の情報:</strong> <hr>{{ info["text"] }}</div>

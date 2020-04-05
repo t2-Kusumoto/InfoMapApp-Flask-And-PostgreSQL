@@ -33,8 +33,8 @@ class DBHandler:
                               date=html.escape(self.now),
                               mask=html.escape(contents['mask']),
                               wet=html.escape(contents['wet']),
-                              liquid=html.escape(contents['liquid']),
-                              sheet=html.escape(contents['sheet']),
+                              paper=html.escape(contents['paper']),
+                              water=html.escape(contents['water']),
                               text=html.escape(contents['text']))
         else:
             data = self.table(date=html.escape(self.now),
