@@ -23,8 +23,7 @@ def main_map():
 def form():
     name = request.form['shopname']
     code = request.form['shopcode']
-    return render_template('form.tpl', shopname=name,
-                           shopcode=code)
+    return render_template('form.tpl', shopname=name, shopcode=code)
 
 
 @app.route('/view', methods=["POST"])
@@ -35,8 +34,10 @@ def view():
     res = select_handler.select(code)
     infos = make_info_dict(res)
 
-    return render_template('view.tpl', infomation=infos,
-                           shopname=name, shopcode=code)
+    return render_template('view.tpl',
+                           infomation=infos,
+                           shopname=name,
+                           shopcode=code)
 
 
 @app.route('/insert_info', methods=['POST'])
@@ -55,13 +56,14 @@ def insert_info():
     update_handler.update(code)
     make_json_file()
     handler.insert(contents)
-    return render_template('thanks.tpl', shopcode=code,
-                           shopname=name)
+    return render_template('thanks.tpl', shopcode=code, shopname=name)
 
 
 @app.route('/opinions_and_impression')
 def opinions_and_impression():
-    handler = DBHandler(db, OpinionsAndImpression, 'opinionsandimpression')
+    handler = DBHandler(db,
+                        OpinionsAndImpression,
+                        'opinionsandimpression')
     res = handler.select_all()
     opinions = make_opinions_dict(res)
     return render_template('opinions.tpl', opinions=opinions)
@@ -74,7 +76,9 @@ def opinions_insert():
     handler.insert(opinion)
     return render_template('receive.tpl')
 
+
 @app.route('/favicon.ico')
 def display_favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
-    'favicon.ico', mimetype='image/vnd.microsoft.icon')
+                               'favicon.ico',
+                               mimetype='image/vnd.microsoft.icon')

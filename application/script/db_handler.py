@@ -54,7 +54,7 @@ class DBHandler:
 
     def delete(self, no):
         delete_row = self.db.session.query(self.table).\
-        filter_by(no=no).first()
+            filter_by(no=no).first()
         self.db.session.delete(delete_row)
         self.db.session.commit()
         self.db.session.close()

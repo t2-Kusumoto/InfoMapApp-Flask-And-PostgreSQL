@@ -36,8 +36,8 @@ class PostData(db.Model):
     def __repr__(self):
         return "<ShopsInfo(code='%s', date='%s', mask='%s',\
         wet='%s', paper='%s', water='%s', text='%s')>"\
-    .format(self.code, self.date, self.mask, self.wet, self.paper,
-    self.water, self.text)
+    .format(self.code, self.date, self.mask, self.wet,
+            self.paper, self.water, self.text)
 
 
 class OpinionsAndImpression(db.Model):
