@@ -126,6 +126,3 @@ DATA = [
 
 - Google Maps API: [Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=ja)
 - Flask: [User's Guide](https://flask.palletsprojects.com/en/1.1.x/)
-
-
-## Licence  
