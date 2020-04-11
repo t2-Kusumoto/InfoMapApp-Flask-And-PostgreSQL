@@ -1,9 +1,14 @@
-# An app that can post the sales status of items from local shops　　
+# App that can post the sales status of items from local shops　　
+
 ---　　
+
+
+![Image](mapsapp.gif)  
 
 NOTE   
 _I can not speak English.  
-This sentence was created entirely by machine translation._
+This sentence was created entirely by machine translation._  
+
 
 ## What is useful?  
 
