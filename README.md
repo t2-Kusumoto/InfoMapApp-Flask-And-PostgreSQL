@@ -99,7 +99,7 @@ DATA = [
 | "makejson" | Create a "data.json" file that describes the location information required to draw the marker on the google map and the contents to be displayed in the "information window" opened by clicking the marker.|
 
 ### others  
-- db_record_delete.py : テーブル削除時に使う  
+- db_record_delete.py : Use when deleting a table  
 
 ```
 ~$ python3 db_record_delete.py 3 post
