@@ -18,8 +18,9 @@ class ShopsInfo(db.Model):
     def __repr__(self):
         return "<ShopsInfo(code='%s', shopname='%s', address='%s',\
         tel='%s', lastupdate='%s', lat='%s', lng='%s')>"\
-    .format(self.code, self.shopname, self.address, self.tel,
-            self.opentime, self.lastupdate, self.lat, self.lng)
+    .format(self.code, self.shopname, self.address,
+            self.tel, self.opentime, self.lastupdate,
+            self.lat, self.lng)
 
 
 class PostData(db.Model):
@@ -29,28 +30,56 @@ class PostData(db.Model):
     date = db.Column(db.String(32))
     mask = db.Column(db.String(8))
     wet = db.Column(db.String(8))
-    paper = db.Column(db.String(8))
+    soap = db.Column(db.String(8))
     water = db.Column(db.String(8))
+    rice = db.Column(db.String(8))
+    noodles = db.Column(db.String(8))
+    pasta = db.Column(db.String(8))
     text = db.Column(db.Text)
+    token = db.Column(db.Text)
 
     def __repr__(self):
         return "<ShopsInfo(code='%s', date='%s', mask='%s',\
-        wet='%s', paper='%s', water='%s', text='%s')>"\
-    .format(self.code, self.date, self.mask, self.wet,
-            self.paper, self.water, self.text)
+        wet='%s', paper='%s', water='%s', text='%s', token='%s')>"\
+    .format(self.code, self.date, self.mask,
+            self.wet, self.soap, self.water,
+            self.rice, self.noodles, self.pasta,
+            self.text, self.token)
 
 
 class OpinionsAndImpression(db.Model):
     __tablename__ = 'opinions'
     no = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.String(32))
     opinion = db.Column(db.Text)
     response = db.Column(db.Text)
+    token = db.Column(db.Text)
 
     def __repr__(self):
-        return "<OpinionsAndImpression(date='%s',opinion='%s',\
-            response='%s')>"\
-    .format(self.date, self.opinion, self.response)
+        return "<OpinionsAndImpression(opinion='%s',\
+            response='%s', token='%s')>"\
+    .format(self.opinion, self.response, self.token)
+
+
+class PostHash(db.Model):
+    __tablename__ = 'posthash'
+    no = db.Column(db.Integer, primary_key=True)
+    post_number = db.Column(db.Integer)
+    key = db.Column(db.Text)
+
+    def __repr__(self):
+        return "<PostHash(post_number='%s',key='%s')>"\
+            .format(self.category, self.post_num, self.key)
+
+
+class OpinionHash(db.Model):
+    __tablename__ = 'opinionhash'
+    no = db.Column(db.Integer, primary_key=True)
+    post_number = db.Column(db.Integer)
+    key = db.Column(db.Text)
+
+    def __repr__(self):
+        return "<OpinionHash(post_number='%s',key='%s')>"\
+            .format(self.category, self.post_num, self.key)
 
 
 def create_db():

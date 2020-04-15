@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>maps app example</title>
+  <title>春日井市西部 コロナ対策製品販売状況</title>
   <style>
     body {
       color: #311;
@@ -38,21 +38,25 @@
     #text {
       margin: 3% 5%;
     }
+    .send {
+      width: 280px;
+      height: 30px;
+      margin-bottom: 15px;
+      border: solid 1px #88a;
+      border-radius: 20px;
+      background: #fff;
+      color: #354aff;
+      cursor: pointer;
+    }
 
-    .btn {
-      margin-top: 15px;
-      width: 120px;
+    .send:hover {
+      opacity: 0.7;
     }
 
     @media (max-width: 1025px) {
     }
 
     @media (max-width: 480px) {
-      .btn {
-        margin-top: 5%;
-        display: block;
-        width: 35%;
-      }
 
       table {
         font-size: 14px;
@@ -62,15 +66,17 @@
 </head>
 <body>
   <h3>◆ {{ shopname }} ◆</h3>
+  <span>※ 投稿日時を確認した上で、情報を参考にするか否かの判断をしていただくようお願いします</span>
   <hr>
   <div id="link">
     <form action="/form" method="POST">
       <input type="hidden" name="shopcode" value="{{ shopcode }}">
       <input type="hidden" name="shopname" value="{{ shopname }}">
-      <input type="submit" value="情報を入力する" class="btn">
+      <input type="hidden" name="time" value="" id="time">
+      <input type="submit" value="情報を入力する" class="send">
     </form>
     <form action="/" method="GET">
-      <input type="submit" value="地図に戻る" class="btn">
+      <input type="submit" value="地図に戻る" class="send">
     </form>
   </div>
   <hr>
@@ -78,7 +84,8 @@
     {% if infomation %}
       {% for info in infomation %}
         <div class="message" id="{{ info['no'] }}">
-          <span id="date">● 投稿日時: {{ info["date"] }}</span>
+          <span id="date">● 投稿番号: No.{{ info['no'] }}</span><br>
+            <span>投稿日時: {{ info["date"] }}</span>
           <table border=1>
             <tr>
               <th>品名</th>
@@ -89,24 +96,45 @@
               <td>{{ info["mask"] }}</td>
             </tr>
             <tr>
-              <td>ウェットティッシュ</td>
+              <td>ウエットティッシュ</td>
               <td>{{ info["wet"] }}</td>
             </tr>
             <tr>
-              <td>キッチンペーパー</td>
-              <td>{{ info["paper"] }}</td>
+              <td>ハンドソープ</td>
+              <td>{{ info["soap"] }}</td>
             </tr>
             <tr>
               <td>ミネラルウォーター</td>
               <td>{{ info["water"] }}</td>
             </tr>
+            <tr>
+              <td>お米</td>
+              <td>{{ info["rice"] }}</td>
+            </tr>
+            <tr>
+              <td>インスタント麺</td>
+              <td>{{ info["noodles"] }}</td>
+            </tr>
+            <tr>
+              <td>パスタ類</td>
+              <td>{{ info["pasta"] }}</td>
+            </tr>
           </table>
-          <div id="text"><strong>より詳細な情報やその他製品の情報:</strong> <hr>{{ info["text"] }}</div>
+          <div id="text"><strong>その他製品の情報:</strong> <hr>{{ info["text"] }}</div>
         </div>
       {% endfor %}
     {% else %}
     <h3>まだ投稿がありません</h3>
     {% endif %}
   </div>
+  <script>
+    {
+      'use strict';
+      window.onload = () => {
+        const target = document.getElementById('time');
+        time.value = Date.now();
+      }
+    }
+  </script>
 </body>
 </html>

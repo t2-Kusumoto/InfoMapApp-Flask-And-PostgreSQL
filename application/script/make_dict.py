@@ -11,7 +11,7 @@ def make_stock_status(color):
     if color == "green":
         return '&emsp;<img src="../static/green_mini.png">&emsp;あり'
     elif color == "yellow":
-        return '&emsp;<img src="../static/yellow_mini.png">&emsp;残りわずか'
+        return '&emsp;<img src="../static/yellow_mini.png">&emsp;少ない'
     elif color == "red":
         return '&emsp;<img src="../static/red_mini.png">&emsp;なし'
     else:
@@ -33,9 +33,13 @@ def make_info_dict(res):
              "date": r.date,
              "mask": make_stock_status(r.mask),
              "wet": make_stock_status(r.wet),
-             "paper": make_stock_status(r.paper),
+             "soap": make_stock_status(r.soap),
              "water": make_stock_status(r.water),
+             "rice": make_stock_status(r.rice),
+             "noodles": make_stock_status(r.noodles),
+             "pasta": make_stock_status(r.pasta),
              "text": make_text(r.text),
+             "token": r.token
              })
     return info_list
 
@@ -46,8 +50,8 @@ def make_opinions_dict(res):
     for r in res:
         opinions_list.append(
             {"no": r.no,
-             "date": r.date,
              "opinion": make_text(r.opinion),
-             "response": make_text(r.response)
+             "response": make_text(r.response),
+             "token": r.token
              })
     return opinions_list
