@@ -37,6 +37,7 @@
 
     #text {
       margin: 3% 5%;
+      word-wrap: break-word;
     }
     .send {
       width: 280px;
