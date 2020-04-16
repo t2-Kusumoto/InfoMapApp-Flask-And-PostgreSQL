@@ -1,4 +1,5 @@
-# App that can post the sales status of items from local shops　　
+# Info Map App (Flask & PostgreSQL version)  
+## App that can post the sales status of items from local shops　　
 
 ---　　
 
