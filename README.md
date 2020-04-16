@@ -20,6 +20,7 @@ Display local store information **on Google Maps** so that shoppers at that stor
 
 Here I mainly deal with out-of-stock information of drug stores and supermarkets (effect of COVID-19), but you can also use it for other purposes. (For example, information on the shortage of relief supplies during a disaster)  
 
+Please change the text such as html according to your environment.　　
 
 ## local environment  
 ```  

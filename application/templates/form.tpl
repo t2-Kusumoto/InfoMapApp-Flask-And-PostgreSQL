@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>春日井市西部 コロナ対策製品販売状況</title>
+  <title>maps app</title>
   <style>
   body {
     color: #311;
@@ -45,7 +45,6 @@
 </head>
 <body>
   <h3>◆ <u>{{ shopname }}</u> ◆</h3>
-  <span>※正確な情報の提供をお願いします</span>
   <hr>
   <form action="/insert_info" method="POST" accept-charset="UTF-8" name="reset">
     <input type="hidden" name="time" value="{{ time }}" id="time">
@@ -131,11 +130,5 @@
   <form action="/" method="GET">
     <input type="submit" value="地図に戻る" class="send">
   </form>
-
-<script>
-// window.onload = () => {
-//   document.reset.reset();
-// }
-</script>
 </body>
 </html>

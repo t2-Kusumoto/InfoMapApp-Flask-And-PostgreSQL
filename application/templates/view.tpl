@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>春日井市西部 コロナ対策製品販売状況</title>
+  <title>maps app</title>
   <style>
     body {
       color: #311;
@@ -66,7 +66,6 @@
 </head>
 <body>
   <h3>◆ {{ shopname }} ◆</h3>
-  <span>※ 投稿日時を確認した上で、情報を参考にするか否かの判断をしていただくようお願いします</span>
   <hr>
   <div id="link">
     <form action="/form" method="POST">
