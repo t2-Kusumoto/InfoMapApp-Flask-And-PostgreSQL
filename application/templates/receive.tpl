@@ -37,7 +37,7 @@
   <span>投稿番号: {{ post_num }}</span><br>
   <span>パスワード: <input type="text" value="{{ passwd }}" id="passwd"></span>
   <br>
-  <button class="send">パスワードをクリップボードにコピー</button>
+  <button class="send" id="copy">パスワードをクリップボードにコピー</button>
 
   <p>内容は「ご意見、ご感想入力フォーム」の「寄せられたご意見、ご感想」で確認できます。</p>
   <form action="/" method="GET">
@@ -48,9 +48,9 @@
   {
     'use strict';
 
-    const btn = document.getElementById('btn');
+    const copy = document.getElementById('copy');
 
-    btn.addEventListener('click', () => {
+    copy.addEventListener('click', () => {
       const copyText = document.getElementById('passwd');
       copyText.select();
       document.execCommand('copy');
