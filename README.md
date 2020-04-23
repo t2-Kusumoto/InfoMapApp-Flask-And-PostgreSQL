@@ -4,7 +4,6 @@
 ---　　
 
 
-![Image](mapsapp.gif)  
 
 NOTE   
 _I can not speak English.  
