@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>maps app</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
   <style>
-    body {
-      color: #311;
-    }
-
     .messageBox {
       margin: 0 auto;
       width: 90%;
@@ -39,21 +31,6 @@
       margin: 3% 5%;
       word-wrap: break-word;
     }
-    .send {
-      width: 280px;
-      height: 30px;
-      margin-bottom: 15px;
-      border: solid 1px #88a;
-      border-radius: 20px;
-      background: #fff;
-      color: #354aff;
-      cursor: pointer;
-    }
-
-    .send:hover {
-      opacity: 0.7;
-    }
-
     @media (max-width: 1025px) {
     }
 
@@ -64,9 +41,10 @@
       }
     }
   </style>
-</head>
-<body>
+{% endblock %}
+{% block main %}
   <h3>◆ {{ shopname }} ◆</h3>
+  <span>※ 投稿日時を確認した上で、情報を参考にするか否かの判断をしていただくようお願いします</span>
   <hr>
   <div id="link">
     <form action="/form" method="POST">
@@ -89,38 +67,18 @@
           <table border=1>
             <tr>
               <th>品名</th>
-              <th>あった？</th>
+              <th>減り具合</th>
             </tr>
-            <tr>
-              <td>マスク</td>
-              <td>{{ info["mask"] }}</td>
-            </tr>
-            <tr>
-              <td>ウエットティッシュ</td>
-              <td>{{ info["wet"] }}</td>
-            </tr>
-            <tr>
-              <td>ハンドソープ</td>
-              <td>{{ info["soap"] }}</td>
-            </tr>
-            <tr>
-              <td>ミネラルウォーター</td>
-              <td>{{ info["water"] }}</td>
-            </tr>
-            <tr>
-              <td>お米</td>
-              <td>{{ info["rice"] }}</td>
-            </tr>
-            <tr>
-              <td>インスタント麺</td>
-              <td>{{ info["noodles"] }}</td>
-            </tr>
-            <tr>
-              <td>パスタ類</td>
-              <td>{{ info["pasta"] }}</td>
-            </tr>
+            {% for key in info["data"] %}
+              <tr>
+                <td>{{ key }}</td>
+                <td>{{ info["data"][key] }}</td>
+              </tr>
+            {% endfor %}
           </table>
-          <div id="text"><strong>その他製品の情報:</strong> <hr>{{ info["text"] }}</div>
+          <div id="text"><strong>その他製品の情報:</strong> <hr>
+            {{ info["text"] }}
+          </div>
         </div>
       {% endfor %}
     {% else %}
@@ -136,5 +94,4 @@
       }
     }
   </script>
-</body>
-</html>
+{% endblock %}

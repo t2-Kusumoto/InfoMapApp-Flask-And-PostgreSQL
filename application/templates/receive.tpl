@@ -1,37 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>maps app</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
   <style>
-    body {
-      color: #311;
-    }
-
     span {
       display: inline-block;
       margin-bottom: 15px;
     }
-
-    .send {
-      width: 280px;
-      height: 30px;
-      margin-bottom: 15px;
-      border: solid 1px #88a;
-      border-radius: 20px;
-      background: #fff;
-      color: #354aff;
-      cursor: pointer;
-    }
-
-    .send:hover {
-      opacity: 0.7;
-    }
   </style>
-</head>
-<body>
+{% endblock %}
+{%block main %}
   <h3>ご意見、ご感想を承りました</h3>
   <p>投稿を削除する場合、以下の情報が必要となります</p>
   <span>投稿番号: {{ post_num }}</span><br>
@@ -40,14 +17,24 @@
   <button class="send" id="copy">パスワードをクリップボードにコピー</button>
 
   <p>内容は「ご意見、ご感想入力フォーム」の「寄せられたご意見、ご感想」で確認できます。</p>
+  <p>※このページでページバック、リロード操作を行わないでください<br>
+  パスワードが確認できなくなります</p>
   <form action="/" method="GET">
     <input type="submit" value="地図に戻る" class="send">
+  </form>
+  <form action="/opinions_and_impression" method="POST">
+    <input type="hidden" name="time" value="" id=time>
+    <input type="submit" value="投稿を確認する" class="send">
+  </form>
+  <form action="/#delete-post" method="GET">
+    <input type="submit" value="ご意見、ご感想を削除する" class="send">
   </form>
 
   <script>
   {
     'use strict';
 
+  // パスワードのクリップボードへのコピー
     const copy = document.getElementById('copy');
 
     copy.addEventListener('click', () => {
@@ -55,7 +42,12 @@
       copyText.select();
       document.execCommand('copy');
     });
+
+  // session管理用トークン生成に使う値
+    let time = Date.now()
+      const setTime = document.getElementById('time')
+      setTime.value = time;
+
   }
   </script>
-</body>
-</html>
+{% endblock %}

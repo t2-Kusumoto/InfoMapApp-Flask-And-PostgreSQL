@@ -1,44 +1,14 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Thank you!</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
   <style>
-  body {
-    color: #311;
-  }
-
   span {
     display: inline-block;
     margin-bottom: 15px;
   }
-
-  .send {
-    width: 280px;
-    height: 30px;
-    margin-bottom: 15px;
-    border: solid 1px #88a;
-    border-radius: 20px;
-    background: #fff;
-    color: #354aff;
-    cursor: pointer;
-  }
-
-  .send:hover {
-    opacity: 0.7;
-  }
-
-
-  @media (max-width: 1025px) {
-  }
-
-  @media (max-width: 480px) {
-  }
   </style>
-</head>
-<body>
+{% endblock %}
+{% block main %}
   <h3>情報の投稿ありがとうございます！</h3>
   <p>投稿を削除する場合、以下の情報が必要となります</p>
   <span>投稿番号: {{ post_num }}</span><br>
@@ -54,7 +24,11 @@
     <input type="hidden" name="shopname" value="{{ shopname }}">
     <input type="submit" value="情報ページをみる" class="send">
   </form>
-
+  <form action="/#delete-post" method="GET">
+    <input type="submit" value="品物情報を削除する" class="send">
+  </form>
+    <p>※このページでページバック、リロード操作を行わないでください<br>
+    パスワードが確認できなくなります</p>
   <script>
   {
     'use strict';
@@ -68,5 +42,4 @@
     });
   }
   </script>
-</body>
-</html>
+{% endblock %}

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+import json
 import hashlib
 import random
+import re
 
 
 def generate_passwd(length):
@@ -15,6 +17,16 @@ def generate_passwd(length):
 
 def generate_sha256(passwd):
     return hashlib.sha256(passwd.encode()).hexdigest()
+
+
+def make_data_dict(form):
+    dic = {}
+    reg = re.compile(r'no-([0-9])')
+    for res in form.keys():
+        if reg.match(res) and form[res]:
+            k = re.sub(reg, 'no{}'.format(r'\1'), res)
+            dic.update({form[res]: form[k]})
+    return json.dumps(dic)
 
 
 def create_postnum_and_passwd(handler, token):

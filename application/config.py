@@ -14,6 +14,5 @@ SQLALCHEMY_DATABASE_URI = 'postgresql://{}:{}@{}:{}/{}'.format(user,
                                                                port,
                                                                dbname)
 
-SECRET_KEY = <secret key>
-
 SQLALCHEMY_TRACK_MODIFICATIONS = True
+SECRET_KEY = <secret key>

@@ -1,33 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>maps app</title>
-  <link rel="stylesheet" href="../css/styles.css">
+{% extends "base.html" %}
+  {% block head %}
+    {{ super() }}
   <style>
-    .send {
-      width: 280px;
-      height: 30px;
-      margin-bottom: 15px;
-      border: solid 1px #88a;
-      border-radius: 20px;
-      background: #fff;
-      color: #354aff;
-      cursor: pointer;
-    }
-
-    .send:hover {
-      opacity: 0.7;
-    }
-
-    input {
-      margin-bottom: 10px;
+      body {
+        padding: 1em;
+      }
+      input {
+      margin-bottom: 20px;
     }
   </style>
-</head>
-<body>
+ {% endblock %}
+{% block main %}
   <div class="contents">
     <h3>投稿削除用フォーム</h3>
     <p>投稿番号と6桁のパスワードを入力してください</p>
@@ -44,5 +27,4 @@
       <input type="submit" value="地図に戻る" class="send">
     </form>
   </div>
-</body>
-</html>
+{% endblock %}

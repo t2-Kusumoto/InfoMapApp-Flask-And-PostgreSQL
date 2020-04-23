@@ -4,18 +4,30 @@ Responsible for creating "dict" used to embed in ".tpl" files.
 
 """
 
+import json
 
-def make_stock_status(color):
-    """Creating an HTML string corresponding to the 'color'
-    'color' represents the stock status."""
-    if color == "green":
-        return '&emsp;<img src="../static/green_mini.png">&emsp;あり'
-    elif color == "yellow":
-        return '&emsp;<img src="../static/yellow_mini.png">&emsp;少ない'
-    elif color == "red":
-        return '&emsp;<img src="../static/red_mini.png">&emsp;なし'
-    else:
-        return '&emsp;<img src="../static/gray_mini.png">&emsp;分からない'
+
+def make_display_strings(source_dic):
+    product_table = {"mask": "マスク",
+                     "wet": "ウエットティッシュ",
+                     "soap": "薬用ハンドソープ",
+                     "paper": "キッチンペーパー",
+                     "liquid": "消毒液類",
+                     "noodles": "インスタント麺",
+                     "pasta": "パスタ",
+                     "sorce": "パスタソース",
+                     "flour": "ホットケーキミックス",
+                     "snack": "袋入りお菓子"}
+    status_table = {
+        "full": '<img src="../static/yellow_mini.png"> 少なくなってる',
+        "few": '<img src="../static/green_mini.png"> 種類が限られる',
+        "finished": '<img src="../static/red_mini.png"> 品切れ',
+        "unknown": '<img src="../static/gray_mini.png"> 分からない',
+    }
+    res_dic = {}
+    for key in source_dic:
+        res_dic[product_table[key]] = status_table[source_dic[key]]
+    return res_dic
 
 
 def make_text(txt):
@@ -31,13 +43,7 @@ def make_info_dict(res):
             {"no": r.no,
              "code": r.code,
              "date": r.date,
-             "mask": make_stock_status(r.mask),
-             "wet": make_stock_status(r.wet),
-             "soap": make_stock_status(r.soap),
-             "water": make_stock_status(r.water),
-             "rice": make_stock_status(r.rice),
-             "noodles": make_stock_status(r.noodles),
-             "pasta": make_stock_status(r.pasta),
+             "data": make_display_strings(json.loads(r.data)),
              "text": make_text(r.text),
              "token": r.token
              })

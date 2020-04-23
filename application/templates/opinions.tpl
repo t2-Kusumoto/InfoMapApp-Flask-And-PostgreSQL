@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>maps app</title>
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
   <style>
-    body {
-      color: #311;
-      margin: 1.5em;
-    }
-
+  body {
+    padding:1em;
+  }
     ul > li {
       font-size: 14px;
     }
@@ -22,7 +16,7 @@
 
     .box {
       margin: 20px 0;
-      height: 600px;
+      height: 720px;
       overflow-y: scroll;
     }
 
@@ -35,24 +29,10 @@
     .box > .message > p {
       margin: 0 0 1em 0;
     }
-
-    .send {
-      width: 280px;
-      height: 30px;
-      margin-bottom: 15px;
-      border: solid 1px #88a;
-      border-radius: 20px;
-      background: #fff;
-      color: #354aff;
-      cursor: pointer;
-    }
-
-    .send:hover {
-      opacity: 0.7;
-    }
   </style>
-</head>
-<body>
+{% endblock %}
+
+{% block main %}
   <h3>◆ ご意見、ご感想入力フォーム ◆</h3>
   <hr>
   <form action="/opinions_insert" method="POST">
@@ -66,9 +46,17 @@
   <form action="/" method="GET">
     <input type="submit" value="地図に戻る" class="send">
   </form>
+  <p>ご意見、ご感想に関するお断り</p>
+  <ul>
+    <li>お寄せいただいたご意見、ご感想は全て目を通すつもりですが、当方、普段従事している仕事の都合上、目を通すことの出来る時間が限られます（24時間以上業務を離れられない場合もあります）。その点、ご理解ください</li>
+    <li>ご要望に対して行われる対応は、サイト管理者個人の能力、都合、気分に拠ります。サイト管理者個人の判断により決定され、他のいかなる基準にも従いません。</li>
+  </ul>
+  <form action="/opinion_delete" method="GET">
+    <input type="submit" value="ご意見、ご感想を削除する" class="send">
+  </form>
   <hr>
 <h3>◆ 寄せられたご意見、ご感想 ◆</h3>
-<div class="box">
+<div class="box" id="opinions">
   {% for opi in opinions %}
     <div class="message">
       <p>・<strong>No.{{ opi["no"] }}:</strong> <u>{{ opi["date"] }}</u></p>
@@ -81,5 +69,4 @@
     </div>
   {% endfor %}
 </div>
-</body>
-</html>
+{% endblock %}

@@ -28,22 +28,14 @@ class PostData(db.Model):
     no = db.Column(db.Integer, primary_key=True)
     code = db.Column(db.String(4))
     date = db.Column(db.String(32))
-    mask = db.Column(db.String(8))
-    wet = db.Column(db.String(8))
-    soap = db.Column(db.String(8))
-    water = db.Column(db.String(8))
-    rice = db.Column(db.String(8))
-    noodles = db.Column(db.String(8))
-    pasta = db.Column(db.String(8))
+    data = db.Column(db.Text)
     text = db.Column(db.Text)
     token = db.Column(db.Text)
 
     def __repr__(self):
-        return "<ShopsInfo(code='%s', date='%s', mask='%s',\
-        wet='%s', paper='%s', water='%s', text='%s', token='%s')>"\
-    .format(self.code, self.date, self.mask,
-            self.wet, self.soap, self.water,
-            self.rice, self.noodles, self.pasta,
+        return "<ShopsInfo(code='%s', date='%s', data='%s',\
+            text='%s', token='%s')>"\
+    .format(self.code, self.date, self.data,
             self.text, self.token)
 
 

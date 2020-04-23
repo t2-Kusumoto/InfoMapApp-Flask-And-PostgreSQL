@@ -30,15 +30,9 @@ class DBHandler:
                               lng=contents['lng'],
                               tel=html.escape(contents['tel']))
         elif self.name == "postdata":
-            data = self.table(code=html.escape(contents['code']),
-                              date=html.escape(self.now),
-                              mask=html.escape(contents['mask']),
-                              wet=html.escape(contents['wet']),
-                              soap=html.escape(contents['soap']),
-                              water=html.escape(contents['water']),
-                              rice=html.escape(contents['rice']),
-                              noodles=html.escape(contents['noodles']),
-                              pasta=html.escape(contents['pasta']),
+            data = self.table(code=contents['code'],
+                              date=self.now,
+                              data=contents['data'],
                               text=html.escape(contents['text']),
                               token=contents['token'])
         elif self.name == "opinionsandimpression":

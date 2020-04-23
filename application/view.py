@@ -19,7 +19,7 @@ from flask import send_from_directory
 
 @app.route('/', methods=["GET"])
 def main_map():
-    return render_template('index.html')
+    return render_template('index.tpl')
 
 
 @app.route('/form', methods=["POST"])
@@ -40,7 +40,6 @@ def view():
     select_handler = DBHandler(db, PostData, "postdata")
     res = select_handler.select(code)
     infos = make_dict.make_info_dict(res)
-
     return render_template('view.tpl',
                            infomation=infos,
                            shopname=name,
@@ -54,17 +53,11 @@ def insert_info():
     res, token = script.collate_hash(time, post_handler)
     if res:
         return render_template('avoidance.tpl')
-
     code = request.form['shopcode']
     name = request.form['shopname']
+    data = script.make_data_dict(dict(request.form))
     contents = {"code": code,
-                "mask": request.form["mask"],
-                "wet": request.form["wet"],
-                "soap": request.form["soap"],
-                "water": request.form["water"],
-                "rice": request.form["rice"],
-                "noodles": request.form["noodles"],
-                "pasta": request.form["pasta"],
+                "data": data,
                 "text": request.form["text"],
                 "token": token
                 }
@@ -75,8 +68,7 @@ def insert_info():
     post_handler.insert(contents)
     password, key, post_num =\
         script.create_postnum_and_passwd(post_handler, token)
-    hash_handler.insert({"post_number": post_num,
-                         "key": key})
+    hash_handler.insert({"post_number": post_num, "key": key})
     return render_template('thanks.tpl',
                            shopcode=code,
                            shopname=name,
@@ -101,7 +93,7 @@ def opinions_and_impression():
 def opinions_insert():
     time = request.form['time']
     opinion_handler = DBHandler(
-    db, OpinionsAndImpression, 'opinionsandimpression')
+        db, OpinionsAndImpression, 'opinionsandimpression')
     res, token = script.collate_hash(time, opinion_handler)
     if res:
         return render_template('avoidance.tpl')
