@@ -1,9 +1,6 @@
 # Info Map App (Flask & PostgreSQL version)  
 ## App that can post the sales status of items from local shops　　
 
----　　
-
-
 
 NOTE   
 _I can not speak English.  
@@ -121,9 +118,3 @@ DATA = [
 | --- |---|
 | argv[1] | number: opinions number |
 | argv[2] | text: reply text |  
-
-
-## References
-
-- Google Maps API: [Maps Javascript API](https://developers.google.com/maps/documentation/javascript/tutorial?hl=ja)
-- Flask: [User's Guide](https://flask.palletsprojects.com/en/1.1.x/)
