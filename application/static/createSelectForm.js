@@ -32,14 +32,14 @@
       <option value="snack">袋入りお菓子</option>
       </select>
       <br>
-      <label for="full" class="radio">少なくなってる</label>
+      <label for="" class="radio">少なくなってる</label>
       <input type="radio" name="no${i}" value="full" id="full">
-      <label for="finieshed" class="radio">品切れ</label>
+      <label for="" class="radio">品切れ</label>
       <input type="radio" name="no${i}" value="finished" id="finished">
       <br>
-      <label for="few" class="radio">種類が限られる</label>
+      <label for="" class="radio">種類が限られる</label>
       <input type="radio" name="no${i}" value="few" id="few">
-      <label for="unknown" class="radio">分からない</label>
+      <label for="" class="radio">分からない</label>
       <input type="radio" name="no${i}" value="unknown" id="unknown" checked>
       <hr>
       </div>`
