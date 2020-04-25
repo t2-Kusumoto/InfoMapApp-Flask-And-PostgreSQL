@@ -1,10 +1,6 @@
 # Info Map App (Flask & PostgreSQL version)  
 ## App that can post the sales status of items from local shops　　
 
----　　
-
-
-![Image](mapsapp.gif)  
 
 NOTE   
 _I can not speak English.  
