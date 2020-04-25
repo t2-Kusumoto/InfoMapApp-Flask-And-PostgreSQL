@@ -44,7 +44,6 @@
 {% endblock %}
 {% block main %}
   <h3>◆ {{ shopname }} ◆</h3>
-  <span>※ 投稿日時を確認した上で、情報を参考にするか否かの判断をしていただくようお願いします</span>
   <hr>
   <div id="link">
     <form action="/form" method="POST">

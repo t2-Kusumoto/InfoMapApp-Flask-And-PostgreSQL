@@ -46,11 +46,6 @@
   <form action="/" method="GET">
     <input type="submit" value="地図に戻る" class="send">
   </form>
-  <p>ご意見、ご感想に関するお断り</p>
-  <ul>
-    <li>お寄せいただいたご意見、ご感想は全て目を通すつもりですが、当方、普段従事している仕事の都合上、目を通すことの出来る時間が限られます（24時間以上業務を離れられない場合もあります）。その点、ご理解ください</li>
-    <li>ご要望に対して行われる対応は、サイト管理者個人の能力、都合、気分に拠ります。サイト管理者個人の判断により決定され、他のいかなる基準にも従いません。</li>
-  </ul>
   <form action="/opinion_delete" method="GET">
     <input type="submit" value="ご意見、ご感想を削除する" class="send">
   </form>
