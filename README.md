@@ -3,8 +3,7 @@
 
 
 NOTE   
-_I can not speak English.  
-This sentence was created entirely by machine translation._  
+_This sentence was created entirely by machine translation._  
 
 
 ## What is useful?  
